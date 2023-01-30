@@ -21,6 +21,7 @@ const Navbar = () => {
 						width="30px"
 						height="30px"
 					/>
+					<span>0</span>
 				</a>
 				<img
 					src="https://i.ibb.co/6XbqwjD/menu.png"
