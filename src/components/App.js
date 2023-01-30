@@ -1,8 +1,10 @@
+
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./index";
 import { Main, Footer, Products, Login, Register } from "./index";
 
 const App = () => {
+
 	return (
 		<>
 			<Navbar />
