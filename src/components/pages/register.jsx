@@ -67,9 +67,9 @@ const Register = ({ loggedIn, setLoggedIn }) => {
       <h2 className={classes.register__title}>Sign up Page</h2>
       <form className={classes.register__form} onSubmit={submitHandler}>
         {erorMsg ? (
-          <div>
+          <div className={classes.error}>
             {erorMsg.map((eror) => {
-              return <h3 style={{color:'crimson'}}>{eror}</h3>;
+              return <h3  className={classes.title2} >{eror}</h3>;
             })}
           </div>
         ) : null}
