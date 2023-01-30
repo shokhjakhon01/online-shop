@@ -1,13 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/login.module.css";
 
-const login = () => {
-
-    
-
+const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	return (
 		<div className={styles.login}>
-			<h2 className={styles.title}>Log-in / Sign up Page</h2>
+			<h2 className={styles.title}>Log-in  Page</h2>
 			<form className={styles["form-login"]} action="login-box">
 				<label className={styles["login-label"]} for="username">
 					Email
@@ -34,4 +34,4 @@ const login = () => {
 	);
 };
 
-export default login;
+export default Login;
