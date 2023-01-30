@@ -27,7 +27,6 @@ const Navbar = () => {
 					src="https://i.ibb.co/6XbqwjD/menu.png"
 					alt=""
 					className="menu-icon"
-					onclick="menutoggle()"
 				/>
 			</div>
 		</div>
