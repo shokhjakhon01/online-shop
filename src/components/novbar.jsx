@@ -1,6 +1,6 @@
 import { Valodation } from "./index";
 
-const Navbar = () => {
+const Navbar = ({ loggedIn, setLoggedIn }) => {
 	return (
 		<div className="container">
 			<div className="navbar">
@@ -13,7 +13,7 @@ const Navbar = () => {
 						/>
 					</a>
 				</div>
-				<Valodation />
+				<Valodation loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 				<a href="cart.html">
 					<img
 						src="https://i.ibb.co/PNjjx3y/cart.png"

@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Valodation = () => {
+const Valodation = ({ loggedIn, setLoggedIn }) => {
+	const navigate = useNavigate();
+
+	const logOuthandler = () => {
+		navigate("/login");
+		setLoggedIn(false);
+	};
 	return (
 		<nav>
 			<ul id="MenuItems">
@@ -14,16 +20,30 @@ const Valodation = () => {
 						<a href="product.html">Products</a>
 					</li>
 				</Link>
-				<Link to={"./login"}>
-					<li>
-						<a href="account.html">Login</a>
+				{loggedIn ? (
+					<Link to={"./account"}>
+						<li>
+							<a href="account.html">account</a>
+						</li>
+					</Link>
+				) : (
+					<Link to={"./login"}>
+						<li>
+							<a href="account.html">Login</a>
+						</li>
+					</Link>
+				)}
+				{loggedIn ? (
+					<li onClick={logOuthandler}>
+						<a href="#">Log Out</a>
 					</li>
-				</Link>
-				<Link to={"./register"}>
-					<li>
-						<a href="account.html">Register</a>
-					</li>
-				</Link>
+				) : (
+					<Link to={"./register"}>
+						<li>
+							<a href="account.html">Register</a>
+						</li>
+					</Link>
+				)}
 			</ul>
 		</nav>
 	);

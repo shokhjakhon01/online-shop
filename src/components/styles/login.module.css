@@ -1,7 +1,7 @@
 .login {
 	display: flex;
 	justify-content: center;
-    flex-direction: column;
+	flex-direction: column;
 	align-items: center;
 	width: 100%;
 	height: 600px;
@@ -14,6 +14,15 @@
 	justify-content: center;
 	align-items: center;
 	font-size: 1.5rem;
+	font-weight: 900;
+	color: rgb(55, 65, 81);
+}
+
+.title2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.9rem;
 	font-weight: 900;
 	color: rgb(55, 65, 81);
 }
@@ -85,4 +94,14 @@
 .login-span {
 	font-size: 0.7rem;
 	color: rgb(37, 99, 235);
+}
+
+.error {
+	width: 100%;
+	border: 1px solid transparent;
+	border-radius: 10px;
+    margin-top: 8px;
+	padding: 1px 5px;
+	background-color: rgba(240, 23, 23, 0.5);
+	color: #fff !important;
 }

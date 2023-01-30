@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { Link,  useNavigate } from "react-router-dom";
+import { useCallback, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/login.module.css";
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState([]);
 	const navigate = useNavigate();
 
 	const onSubmitHandler = (e) => {
@@ -31,14 +33,23 @@ const Login = () => {
 				}
 			);
 
-            const res = await responce.json();
-			console.log(res);
+			const res = await responce.json();
 
 			res && setIsLoading(false);
 			setEmail("");
-            setPassword("");
-            
-            navigate('/')
+			setPassword("");
+			if (responce.status === 200) {
+				setLoggedIn(true);
+				navigate("/");
+			} else {
+				const errors = Object.keys(res.errors).map((name) => {
+					return `${name} ${res.errors[name].join(", ")}`;
+				});
+				console.log(errors);
+
+				setErrorMessage(errors);
+				setError(true);
+			}
 		};
 
 		fatchLogin();
@@ -47,10 +58,19 @@ const Login = () => {
 	return (
 		<div className={styles.login}>
 			<h2 className={styles.title}>Log-in Page</h2>
+
 			<form
 				className={styles["form-login"]}
 				action="login-box"
 				onSubmit={onSubmitHandler}>
+				{error ? (
+					<div className={styles.error}>
+						{errorMessage.map((item) => {
+							return <h3 className={styles.title2}>{item}</h3>;
+						})}
+					</div>
+				) : null}
+
 				<label className={styles["login-label"]} htmlFor="username">
 					Email
 				</label>
