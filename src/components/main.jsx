@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 const Main = () => {
-	const [loading, isLoading] = useState();
+    const [loading, isLoading] = useState();
+
 	return (
 		<div class="small-container">
 			<div class="row row-2">
