@@ -2,7 +2,7 @@ import styles from "../styles/login.module.css";
 
 const login = () => {
 	return (
-		<div>
+		<div className={styles.login}>
 			<h2 className={styles.title}>Log-in / Sign up Page</h2>
 			<form className={styles["form-login"]} action="login-box">
 				<label className={styles["login-label"]} for="username">
