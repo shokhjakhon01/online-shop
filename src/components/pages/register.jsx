@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "../styles/register.module.css";
 
-
-
-const Register = () => {
+const Register = ({ loggedIn, setLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-	const navigate = useNavigate()
+  const [erorMsg, setErrorMsg] = useState([]);
+  const navigate = useNavigate();
+
 
   const emailEventHandler = (e) => {
     setEmail(e.target.value);
@@ -20,30 +20,43 @@ const Register = () => {
     setPassword(e.target.value);
   };
 
-  const newUser = {
-    user: {
-      username,
-      email,
-      password,
-    },
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch(`https://api.realworld.io/api/users/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-				console.log(data)
-				navigate('/')
-      })
-      .catch((err) => console.log(err));
 
+    const newUser = {
+      user: {
+        username,
+        email,
+        password,
+      },
+    };
+
+    try {
+      (async function () {
+        const res = await fetch(`https://api.realworld.io/api/users/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        });
+
+        const result = await res.json();
+
+        console.log(result);
+        if (res.status === 200) {
+          setLoggedIn(true);
+          navigate("/");
+        } else {
+          const error = Object.keys(result.errors).map((name) => {
+            return `${name} ${result.errors[name].join(", ")}`;
+          });
+          setErrorMsg(error)
+        }
+      })();
+    } catch (error) {
+      console.log(error);
+    }
     setEmail("");
     setPassword("");
     setUsername("");
@@ -53,6 +66,13 @@ const Register = () => {
     <section className={classes.register}>
       <h2 className={classes.register__title}>Sign up Page</h2>
       <form className={classes.register__form} onSubmit={submitHandler}>
+        {erorMsg ? (
+          <div>
+            {erorMsg.map((eror) => {
+              return <h3 style={{color:'crimson'}}>{eror}</h3>;
+            })}
+          </div>
+        ) : null}
         <label className={classes.register__label} htmlFor="email">
           email
         </label>
@@ -79,13 +99,11 @@ const Register = () => {
         <input
           id="password"
           className={classes.register__input}
-          type="text"
+          type="password"
           onChange={passwordEventHandler}
           value={password}
         />
-        <button className={classes.register__btn}>
-				Sign up
-        </button>
+        <button className={classes.register__btn}>Sign up</button>
         <div className={classes.register__box}>
           <a href="#!" target="_blank" rel="noopener">
             forgot password
