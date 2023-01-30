@@ -1,11 +1,14 @@
+import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./index";
 
 const App = () => {
 	return (
 		<>
-			
-				<Navbar />
-			
+			<Navbar />
+			<Routes>
+				<Route path="/" element={<Main />} />
+				
+			</Routes>
 
 			{/* <div class="small-container">
 				<div class="row row-2">
