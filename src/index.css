@@ -335,6 +335,15 @@ ul {
 		margin-bottom: 10px;
 	}
 
+	.navbar-link{
+		position: relative;
+	}
+
+	.navbar-counter{
+		position: absolute;
+		top: 0;
+	}
+
 	nav ul li a {
 		color: #fff;
 	}
