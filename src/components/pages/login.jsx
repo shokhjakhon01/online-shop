@@ -37,7 +37,7 @@ const Login = ({ setLoggedIn }) => {
 
 			res && setIsLoading(false);
 			setEmail("");
-			setPassword("");
+            setPassword("");
 			if (responce.status === 200) {
 				setLoggedIn(true);
 				navigate("/");

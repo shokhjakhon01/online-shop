@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar } from "./index";
+import { Account, Navbar } from "./index";
 import { Main, Footer, Products, Login, Register } from "./index";
 
 const App = () => {
@@ -27,6 +27,10 @@ const App = () => {
         <Route
           path="/register"
           element={<Register loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+        />
+        <Route
+          path="/account"
+          element={<Account loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
         />
       </Routes>
       <Footer />
