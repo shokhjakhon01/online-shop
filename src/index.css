@@ -80,6 +80,13 @@ p {
 	transition: background 0.5s;
 }
 
+.main__hero{
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	
+}
+
 .btn:hover {
 	background: #563434;
 }

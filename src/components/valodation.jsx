@@ -6,6 +6,7 @@ const Valodation = ({ loggedIn, setLoggedIn }) => {
 	const logOuthandler = () => {
 		navigate("/login");
 		setLoggedIn(false);
+		localStorage.removeItem('token')
 	};
 	return (
 		<nav>

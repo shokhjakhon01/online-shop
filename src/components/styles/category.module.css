@@ -1,0 +1,16 @@
+
+.category{
+  display: flex;
+  align-items:center;
+}
+
+.title{
+  cursor: pointer;
+  font-size: 20px;
+  border-bottom: 1px solid transparent;
+  transition: all .3s linear;
+}
+
+.title:hover{
+  border-bottom: 1px solid crimson;
+}

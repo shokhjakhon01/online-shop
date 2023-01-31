@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Account, Navbar } from "./index";
 import { Main, Footer, Products, Login, Register } from "./index";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const token = localStorage.getItem('token')
+  console.log(token)
+
+  useEffect(()=> {
+    if(token){
+      setLoggedIn(true)
+    }
+  },[token])
+  
 
   return (
     <>

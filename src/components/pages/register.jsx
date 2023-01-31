@@ -47,6 +47,7 @@ const Register = ({ loggedIn, setLoggedIn }) => {
         if (res.status === 200) {
           setLoggedIn(true);
           navigate("/");
+          localStorage.setItem("token", result.user.token)
         } else {
           const error = Object.keys(result.errors).map((name) => {
             return `${name} ${result.errors[name].join(", ")}`;
