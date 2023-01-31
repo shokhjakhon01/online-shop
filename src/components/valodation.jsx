@@ -36,7 +36,7 @@ const Valodation = ({ loggedIn, setLoggedIn }) => {
 				)}
 				{loggedIn ? (
 					<li onClick={logOuthandler}>
-						<a href="#">Log Out</a>
+						<a href="#!">Log Out</a>
 					</li>
 				) : (
 					<Link to={"./register"}>
