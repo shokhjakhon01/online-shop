@@ -1,6 +1,33 @@
+import { useEffect, useState } from "react";
 import styles from "../styles/account.module.css";
 
 const Account = () => {
+	const [state, setState] = useState([
+		{
+			user: {
+				username: "",
+				bio: "lorem10",
+				image: "https://icons.veryicon.com/png/o/application/cloud-supervision-platform-vr10/admin-5.png",
+				email: "lorem10@gmail.com",
+			},
+		},
+	]);
+
+	const fetchUsers = async () => {
+		const token = localStorage.getItem("token");
+
+		const response = await fetch("https://api.realworld.io/api/user", {
+			headers: { Authorization: `Token ${token}` },
+		});
+		const user = await response.json();
+
+		setState([user]);
+	};
+
+	useEffect(() => {
+		fetchUsers();
+	}, []);
+
 	return (
 		<div className="container">
 			<div className={styles.admin}>
@@ -12,19 +39,18 @@ const Account = () => {
 				<div className={styles["admin-user"]}>
 					<div>
 						<img
+							className={styles["admin-image"]}
 							width={"300px"}
 							height={"300px"}
-							src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"
+							src={state[0].user.image}
 							alt="profile"
 						/>
 					</div>
 					<div className={styles["admin-content"]}>
 						<h3>Hush kelibsiz !!</h3>
-						<h4>Username: username</h4>
-						<p>
-							Bio: Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Iste natus nemo hic adipisci debitis inventore.
-						</p>
+						<h4>Username: {state[0].user.username} </h4>
+						<p>Bio: {state[0].user.bio}</p>
+						<p>Bio: {state[0].user.email}</p>
 						<button className={styles["admin-btn"]}>
 							Malumotlarni o'zgartirish
 						</button>

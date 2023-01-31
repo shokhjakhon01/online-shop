@@ -37,10 +37,11 @@ const Login = ({ setLoggedIn }) => {
 
 			res && setIsLoading(false);
 			setEmail("");
-            setPassword("");
+			setPassword("");
 			if (responce.status === 200) {
 				setLoggedIn(true);
 				navigate("/");
+				localStorage.setItem("token", res.user.token);
 			} else {
 				const errors = Object.keys(res.errors).map((name) => {
 					return `${name} ${res.errors[name].join(", ")}`;

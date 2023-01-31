@@ -7,7 +7,7 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const token = localStorage.getItem('token')
-  console.log(token)
+ 
 
   useEffect(()=> {
     if(token){
