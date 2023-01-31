@@ -5,7 +5,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
 		<div className="container">
 			<div className="navbar">
 				<div className="logo">
-					<a href="index.html">
+					<a href="/">
 						<img
 							src="https://i.ibb.co/kDVwgwp/logo.png"
 							alt="RedStore"

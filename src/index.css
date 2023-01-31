@@ -84,7 +84,7 @@ p {
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
-	
+
 }
 
 .btn:hover {
@@ -623,4 +623,15 @@ form a {
 	.cart-info p {
 		display: none;
 	}
+}
+
+.navbar-link{
+	position: relative;
+}
+
+.navbar-counter{
+	position: absolute;
+	top: 20%;
+	right: 28%;
+	color: crimson;
 }
