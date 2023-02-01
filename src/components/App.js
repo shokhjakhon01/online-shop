@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Account, Navbar } from "./index";
+import { Account, Navbar, Posts } from "./index";
 import { Main, Footer, Products, Login, Register } from "./index";
 
 const App = () => {
