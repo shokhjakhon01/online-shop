@@ -12,3 +12,5 @@ export const dataAccountBtn = [
 		value: "Statistics",
 	},
 ];
+
+export const RoutesData = [{}];
