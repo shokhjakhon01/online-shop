@@ -5,6 +5,7 @@ import AdminUser from "../admin-user";
 import styles from "../styles/account.module.css";
 import { dataAccountBtn } from "../../service/data";
 import { useNavigate } from "react-router-dom";
+import ButtonAdmin from "../button-admin";
 
 const Account = () => {
 	const [state, setState] = useState([
@@ -22,7 +23,7 @@ const Account = () => {
 
 	const btnHandler = (e) => {
 		setValue(e.target.dataset.id);
-		
+
 		if (+value === 2) {
 			navigate("/account/posts");
 		}
@@ -46,19 +47,10 @@ const Account = () => {
 	return (
 		<div className="container">
 			<div className={styles.admin}>
-				<div className={styles["btn-group"]}>
-					{dataAccountBtn.map((btn) => {
-						return (
-							<button
-								data-id={btn.id}
-								onClick={btnHandler}
-								key={btn.id}
-								className={styles["admin-btn"]}>
-								{btn.value}
-							</button>
-						);
-					})}
-				</div>
+				<ButtonAdmin
+					dataAccountBtn={dataAccountBtn}
+					btnHandler={btnHandler}
+				/>
 
 				<AdminUser state={state} />
 
