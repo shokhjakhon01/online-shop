@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { LoggedInContext } from "../context/loggedIn";
 
-const Valodation = ({ loggedIn, setLoggedIn }) => {
+const Valodation = () => {
+	const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
 	const navigate = useNavigate();
 
 	const logOuthandler = () => {
 		navigate("/login");
 		setLoggedIn(false);
-		localStorage.removeItem('token')
+		localStorage.removeItem("token");
 	};
 	return (
 		<nav>

@@ -1,10 +1,12 @@
 import React from "react";
-import classes from './styles/loader.module.css'
+import classes from "./styles/loader.module.css";
 
 const Loader = () => {
-  return <div className={classes.overlay}>
-    <div class={classes['lds-hourglass']}></div>
-  </div>
+	return (
+		<div className={classes.overlay}>
+			<div className={classes["lds-hourglass"]}></div>
+		</div>
+	);
 };
 
 export default Loader;

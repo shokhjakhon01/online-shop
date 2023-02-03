@@ -1,14 +1,16 @@
-import { useCallback, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { LoggedInContext } from "../../context/loggedIn";
 import styles from "../styles/login.module.css";
 
-const Login = ({ setLoggedIn }) => {
+const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState([]);
 	const navigate = useNavigate();
+	const { setLoggedIn } = useContext(LoggedInContext);
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();

@@ -4,22 +4,21 @@ import { dataAccountBtn } from "../../service/data";
 import ButtonAdmin from "../button-admin";
 import styles from "../styles/account.module.css";
 import classes from "../styles/admin-post.module.css";
-
-
+import Input from "../../ui/input";
+import Label from "../../ui/label";
 
 const Posts = () => {
 	const [value, setValue] = useState(1);
 	const navigate = useNavigate();
-
 
 	const btnHandler = (e) => {
 		setValue(e.target.dataset.id);
 
 		if (+value === 2) {
 			navigate("/account/posts");
-        } else if (+value === 1) {
-            navigate("/account");
-        }
+		} else if (+value === 1) {
+			navigate("/account");
+		}
 	};
 	return (
 		<div className="container">
@@ -30,51 +29,73 @@ const Posts = () => {
 				/>
 			</div>
 			<form className={classes["form-admin"]}>
-				<label className={classes["title"]} htmlFor="title">
-					Title
-				</label>
-				<input className={classes["admin-input"]} type="text" id="title" />
-				<label className={classes["title"]} htmlFor="description">
-					Description
-				</label>
-				<input
+				<Label
+					className={classes["title"]}
+					htmlFor="title"
+					children={"Title"}
+				/>
+				<Input
+					className={classes["admin-input"]}
+					type="text"
+					id="title"
+					name="name"
+				/>
+				<Label
+					className={classes["title"]}
+					htmlFor="description"
+					children={"Description"}
+				/>
+				<Input
 					className={classes["admin-input"]}
 					type="text"
 					id="description"
+					name="description"
 				/>
-				<label className={classes["title"]} htmlFor="price">
-					Price
-				</label>
-				<input
+				<Label
+					className={classes["title"]}
+					htmlFor="price"
+					children={"Price"}
+				/>
+				<Input
 					className={classes["admin-input"]}
 					type="number"
 					id="price"
+					name="price"
 				/>
-				<label className={classes["title"]} htmlFor="rating">
-					Rating
-				</label>
-				<input
+				<Label
+					className={classes["title"]}
+					htmlFor="rating"
+					children={"Rating"}
+				/>
+				<Input
 					className={classes["admin-input"]}
 					type="number"
 					id="rating"
+					name="rating"
 				/>
-				<label className={classes["title"]} htmlFor="thumbnail">
-					Banner Image
-				</label>
-				<input
+				<Label
+					className={classes["title"]}
+					htmlFor="thumbnail"
+					children={"Banner Image"}
+				/>
+				<Input
 					className={classes["admin-input"]}
 					type="text"
 					id="thumbnail"
+					name="thumbnail"
 				/>
-				<label className={classes["title"]} htmlFor="thumbnail">
-					You need to input images with ','
-				</label>
-				<input
+				<Label
+					className={classes["title"]}
+					htmlFor="thumbnail"
+					children={"You need to input images with ','"}
+				/>
+				<Input
 					className={classes["admin-input"]}
 					type="text"
 					id="thumbnail"
+					name="sixImage"
 				/>
-				<button className={classes['admin-btn']}>Add new post</button>
+				<button className={classes["admin-btn"]}>Add new post</button>
 			</form>
 		</div>
 	);

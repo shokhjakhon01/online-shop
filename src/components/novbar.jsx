@@ -1,6 +1,7 @@
 import { Valodation } from "./index";
 
-const Navbar = ({ loggedIn, setLoggedIn }) => {
+const Navbar = () => {
+
 	return (
 		<div className="container">
 			<div className="navbar">
@@ -13,7 +14,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
 						/>
 					</a>
 				</div>
-				<Valodation loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+				<Valodation />
 				<a className="navbar-link" href="cart.html">
 					<img
 						src="https://i.ibb.co/PNjjx3y/cart.png"
