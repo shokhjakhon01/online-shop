@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { LoggedInContext } from "../context/loggedIn";
 import { Account, Navbar, Posts } from "./index";
@@ -7,7 +7,7 @@ import ProductCategory from "./pages/productCategories";
 
 const App = () => {
 	const token = localStorage.getItem("token");
-	const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+	const { setLoggedIn } = useContext(LoggedInContext);
 
 	useEffect(() => {
 		if (token) {
@@ -25,10 +25,7 @@ const App = () => {
 				<Route path="/register" element={<Register />} />
 				<Route path="/account" element={<Account />} />
 				<Route path="/:id" element={<ProductCategory />} />
-				<Route
-					path="/account/posts"
-					element={<Posts />}
-				/>
+				<Route path="/account/posts" element={<Posts />} />
 			</Routes>
 			<Footer />
 		</>
