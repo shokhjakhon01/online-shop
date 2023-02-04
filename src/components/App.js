@@ -4,6 +4,7 @@ import { LoggedInContext } from "../context/loggedIn";
 import { Account, Navbar, Posts } from "./index";
 import { Main, Footer, Products, Login, Register } from "./index";
 import ProductCategory from "./pages/productCategories";
+import Single from "./pages/single";
 
 const App = () => {
 	const token = localStorage.getItem("token");
@@ -25,6 +26,7 @@ const App = () => {
 				<Route path="/register" element={<Register />} />
 				<Route path="/account" element={<Account />} />
 				<Route path="/:id" element={<ProductCategory />} />
+				<Route path="/products/:id" element={<Single />} />
 				<Route path="/account/posts" element={<Posts />} />
 			</Routes>
 			<Footer />

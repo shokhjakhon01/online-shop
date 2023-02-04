@@ -15,17 +15,16 @@ const AllProducts = () => {
       setLoading(false);
     };
     fetchProducts();
-    
   }, []);
 
-  if(loading){
-    return <Loader />
+  if (loading) {
+    return <Loader />;
   }
 
   return (
     <div className="row">
-      {products.map((product) => (
-        <AllProduct key={product.id} product={product} />
+      {products.map((product, i) => (
+        <AllProduct key={i} product={product} />
       ))}
     </div>
   );
