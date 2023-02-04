@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { dataAccountBtn } from "../../service/data";
 import ButtonAdmin from "../button-admin";
@@ -7,9 +7,12 @@ import classes from "../styles/admin-post.module.css";
 import Input from "../../ui/input";
 import Label from "../../ui/label";
 
+
 const Posts = () => {
 	const [value, setValue] = useState(1);
 	const navigate = useNavigate();
+    
+    
 
 	const btnHandler = (e) => {
 		setValue(e.target.dataset.id);

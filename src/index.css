@@ -80,11 +80,10 @@ p {
 	transition: background 0.5s;
 }
 
-.main__hero{
+.main__hero {
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
-
 }
 
 .btn:hover {
@@ -306,6 +305,15 @@ ul {
 	width: 140px;
 }
 
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+    z-index: 109;
+}
+
 .footer hr {
 	border: none;
 	background: #b5b5b5;
@@ -342,11 +350,11 @@ ul {
 		margin-bottom: 10px;
 	}
 
-	.navbar-link{
+	.navbar-link {
 		position: relative;
 	}
 
-	.navbar-counter{
+	.navbar-counter {
 		position: absolute;
 		top: 0;
 	}
@@ -625,11 +633,11 @@ form a {
 	}
 }
 
-.navbar-link{
+.navbar-link {
 	position: relative;
 }
 
-.navbar-counter{
+.navbar-counter {
 	position: absolute;
 	top: 20%;
 	right: 28%;
