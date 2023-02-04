@@ -18,7 +18,6 @@ const Slider = () => {
       spaceBetween={10}
       slidesPerView={1}
       navigation={{
-        // Both prevEl & nextEl are null at render so this does not work
         prevEl: navigationPrevRef.current,
         nextEl: navigationNextRef.current,
       }}
