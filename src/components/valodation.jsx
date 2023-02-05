@@ -15,9 +15,9 @@ const Valodation = () => {
 		<nav>
 			<ul id="MenuItems">
 				<Link to={"./"}>
-					<li>
-						<a href="index.html">Home</a>
-					</li>
+					
+						 Home
+					
 				</Link>
 				<Link to={"./products"}>
 					<li>

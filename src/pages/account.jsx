@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import AdminActive from "../admin-active";
-import AdminPay from "../admin-pay";
-import AdminUser from "../admin-user";
+import AdminActive from "../components/admin-active";
+import AdminPay from "../components/admin-pay";
+import AdminUser from "../components/admin-user";
 import styles from "../styles/account.module.css";
-import { dataAccountBtn } from "../../service/data";
+import { dataAccountBtn } from "../service/data";
 import { useNavigate } from "react-router-dom";
-import ButtonAdmin from "../button-admin";
-import Loader from "../loader";
-import { ModalContext } from "../../context/modal";
-import Modal from "../modal";
+import ButtonAdmin from "../components/button-admin";
+import Loader from "../components/loader";
+import { ModalContext } from "../context/modal";
+import Modal from "../components/modal";
 
 const Account = () => {
 	const [loader, setLoader] = useState(false);
@@ -53,13 +53,13 @@ const Account = () => {
 
 	if (loader) {
 		return <Loader />;
-    }
-    
-    if (modalActive) {
-        document.body.style.overflow = "hidden";
-    } else {
-        document.body.style.overflow = "auto";
-    }
+	}
+
+	if (modalActive) {
+		document.body.style.overflow = "hidden";
+	} else {
+		document.body.style.overflow = "auto";
+	}
 
 	const modalCloseHandler = (e) => {
 		setModalActive(false);

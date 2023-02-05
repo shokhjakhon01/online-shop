@@ -1,4 +1,4 @@
-import styles from "./styles/account.module.css";
+import styles from "../styles/account.module.css";
 
 const AdminPay = () => {
 	return (

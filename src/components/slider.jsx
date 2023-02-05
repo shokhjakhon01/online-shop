@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import smartphone from "../assets/smart.jpg";
-import classes from "./styles/slider.module.css";
+import classes from "../styles/slider.module.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 

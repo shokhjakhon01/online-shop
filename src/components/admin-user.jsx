@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ModalContext } from "../context/modal";
-import styles from "./styles/account.module.css";
+import styles from "../styles/account.module.css";
 
 const AdminUser = ({ state }) => {
 	const { setModalActive } = useContext(ModalContext);

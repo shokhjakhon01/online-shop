@@ -1,11 +1,11 @@
 import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { dataAccountBtn } from "../../service/data";
-import ButtonAdmin from "../button-admin";
+import { dataAccountBtn } from "../service/data";
+import ButtonAdmin from "../components/button-admin";
 import styles from "../styles/account.module.css";
 import classes from "../styles/admin-post.module.css";
-import Input from "../../ui/input";
-import Label from "../../ui/label";
+import Input from "../ui/input";
+import Label from "../ui/label";
 
 
 const Posts = () => {

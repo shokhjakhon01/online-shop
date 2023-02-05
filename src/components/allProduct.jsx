@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from '../components/styles/allProduct.module.css'
+import classes from '../styles/allProduct.module.css'
 
 const AllProduct = ({ product }) => {
 	return (

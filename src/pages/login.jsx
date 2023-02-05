@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LoggedInContext } from "../../context/loggedIn";
+import { LoggedInContext } from "../context/loggedIn";
 import styles from "../styles/login.module.css";
 
 const Login = () => {

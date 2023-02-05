@@ -1,4 +1,4 @@
-export const dataAccountBtn = [
+ export const dataAccountBtn = [
 	{
 		id: 1,
 		value: "My profile",

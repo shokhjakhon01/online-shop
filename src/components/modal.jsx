@@ -1,6 +1,6 @@
 import Input from "../ui/input";
 import Label from "../ui/label";
-import styles from "./styles/modal.module.css";
+import styles from "../styles/modal.module.css";
 import close from "../assets/close.svg";
 import { useContext } from "react";
 import { ModalContext } from "../context/modal";

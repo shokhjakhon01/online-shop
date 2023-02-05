@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoggedInContext } from "../../context/loggedIn";
+import { LoggedInContext } from "../context/loggedIn";
 import classes from "../styles/register.module.css";
 
 const Register = () => {
