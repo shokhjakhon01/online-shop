@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoggedInContext } from "../context/loggedIn";
 import styles from "../styles/login.module.css";
+import { InputUI } from "../ui";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -60,12 +61,9 @@ const Login = () => {
 
 	return (
 		<div className={styles.login}>
-			<h2 className={styles.title}>Log-in Page</h2>
+			<h2 className={styles.title}>Log in Page</h2>
 
-			<form
-				className={styles["form-login"]}
-				action="login-box"
-				onSubmit={onSubmitHandler}>
+			<form className={styles["form-login"]} onSubmit={onSubmitHandler}>
 				{error ? (
 					<div className={styles.error}>
 						{errorMessage.map((item) => {
@@ -74,36 +72,29 @@ const Login = () => {
 					</div>
 				) : null}
 
-				<label className={styles["login-label"]} htmlFor="username">
-					Email
-				</label>
-				<input
+				<InputUI
+					label={"Email"}
 					value={email}
-					className={styles["login-input"]}
-					type="text"
-					onChange={(e) => setEmail(e.target.value)}
+					setState={setEmail}
+					type={"email"}
 				/>
-				<label className={styles["login-label"]} htmlFor="password">
-					Password
-				</label>
-				<input
+
+				<InputUI
+					label={"Password"}
 					value={password}
-					className={styles["login-input"]}
-					type="password"
-					onChange={(e) => setPassword(e.target.value)}
+					setState={setPassword}
+					type={"password"}
 				/>
+
 				<button type="submit" className={styles["login-btn"]}>
 					{isLoading ? "login..." : "login"}
 				</button>
+
 				<div className={styles["login-box"]}>
-					<a className={styles["login-link"]} href="a" rel="noopener">
-						If you haven't an account ?
-					</a>
-					<span className={styles["login-span"]}>/</span>
-					<Link to={"./register"}>
-						<a className={styles["login-link"]} href="a" rel="noopener">
-							sign up
-						</a>
+					<p>If you haven't an account ?</p>
+
+					<Link className={styles["login-link"]} to={"./register"}>
+						sign up
 					</Link>
 				</div>
 			</form>
