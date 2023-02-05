@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Loader from "../loader";
+import Loader from "../components/loader";
 
 const Single = () => {
   const { id } = useParams();
