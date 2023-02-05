@@ -14,38 +14,29 @@ const Valodation = () => {
 	return (
 		<nav>
 			<ul id="MenuItems">
-				<Link to={"./"}>
-					
-						 Home
-					
+				<Link to={"/"}>
+					<li>Home</li>
 				</Link>
-				<Link to={"./products"}>
-					<li>
-						<a href="product.html">Products</a>
-					</li>
+
+				<Link to={"/products"}>
+					<li>Products</li>
 				</Link>
+
 				{loggedIn ? (
 					<Link to={"./account"}>
-						<li>
-							<a href="account.html">account</a>
-						</li>
+						<li>account</li>
 					</Link>
 				) : (
 					<Link to={"./login"}>
-						<li>
-							<a href="account.html">Login</a>
-						</li>
+						<li>Login</li>
 					</Link>
 				)}
+
 				{loggedIn ? (
-					<li onClick={logOuthandler}>
-						<a href="#!">Log Out</a>
-					</li>
+					<li onClick={logOuthandler}>Log Out</li>
 				) : (
 					<Link to={"./register"}>
-						<li>
-							<a href="account.html">Register</a>
-						</li>
+						<li>Register</li>
 					</Link>
 				)}
 			</ul>

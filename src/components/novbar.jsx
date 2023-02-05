@@ -1,34 +1,23 @@
 import { Valodation } from "./index";
+import { logo, addCard, menu } from "../constants";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-
 	return (
 		<div className="container">
 			<div className="navbar">
-				<div className="logo">
-					<a href="/">
-						<img
-							src="https://i.ibb.co/kDVwgwp/logo.png"
-							alt="RedStore"
-							width="125px"
-						/>
-					</a>
-				</div>
+				<Link className="logo" to={"/"}>
+					<img src={logo} alt="RedStore" width="125px" />
+				</Link>
+
 				<Valodation />
-				<a className="navbar-link" href="cart.html">
-					<img
-						src="https://i.ibb.co/PNjjx3y/cart.png"
-						alt=""
-						width="30px"
-						height="30px"
-					/>
+
+				<Link className="navbar-link" to={'/'}>
+					<img src={addCard} alt="add-card" width="30px" height="30px" />
 					<span className="navbar-counter">0</span>
-				</a>
-				<img
-					src="https://i.ibb.co/6XbqwjD/menu.png"
-					alt=""
-					className="menu-icon"
-				/>
+				</Link>
+
+				<img src={menu} alt="menu" className="menu-icon" />
 			</div>
 		</div>
 	);
