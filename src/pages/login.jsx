@@ -39,7 +39,7 @@ const Login = () => {
 		if (loggedIn) {
 			navigate("/");
 		}
-	}, [loggedIn]);
+	}, [loggedIn, navigate]);
 
 	return (
 		<div className={styles.login}>
