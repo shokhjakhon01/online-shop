@@ -1,77 +1,53 @@
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LoggedInContext } from "../context/loggedIn";
 import styles from "../styles/login.module.css";
 import { InputUI } from "../ui";
+
+// IMPORT WITH REDUX ...
+import { useDispatch, useSelector } from "react-redux";
+import { signUserFailore, signUserStart, signUserSuccess } from "../slice/auth";
+import AuthService from "../service/auth";
+import ValidationError from "../components/validation-error";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(false);
-	const [errorMessage, setErrorMessage] = useState([]);
+	const { isLoading, loggedIn } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { setLoggedIn } = useContext(LoggedInContext);
 
-	const onSubmitHandler = (e) => {
+	const onSubmitHandler = async (e) => {
 		e.preventDefault();
 
-		let user = {
-			user: {
-				email,
-				password,
-			},
-		};
+		const user = { email, password };
+		dispatch(signUserStart());
 
-		const fatchLogin = async () => {
-			setIsLoading(true);
-			const responce = await fetch(
-				"https://api.realworld.io/api/users/login",
-				{
-					method: "POST",
-					headers: {
-						"content-type": "application/json",
-					},
-					body: JSON.stringify(user),
-				}
-			);
+		try {
+            const responce = await AuthService.userLogin(user);
+            
+			dispatch(signUserSuccess(responce.user));
+			navigate("/");
+		} catch (error) {
+			dispatch(signUserFailore(error.response.data.errors));
+		}
 
-			const res = await responce.json();
-
-			res && setIsLoading(false);
-			setEmail("");
-			setPassword("");
-			if (responce.status === 200) {
-				setLoggedIn(true);
-				navigate("/");
-				localStorage.setItem("token", res.user.token);
-			} else {
-				const errors = Object.keys(res.errors).map((name) => {
-					return `${name} ${res.errors[name].join(", ")}`;
-				});
-				console.log(errors);
-
-				setErrorMessage(errors);
-				setError(true);
-			}
-		};
-
-		fatchLogin();
+		setEmail("");
+		setPassword("");
 	};
+
+	useEffect(() => {
+		if (loggedIn) {
+			navigate("/");
+		}
+	}, [loggedIn]);
 
 	return (
 		<div className={styles.login}>
 			<h2 className={styles.title}>Log in Page</h2>
 
+            <ValidationError />
+            
 			<form className={styles["form-login"]} onSubmit={onSubmitHandler}>
-				{error ? (
-					<div className={styles.error}>
-						{errorMessage.map((item) => {
-							return <h3 className={styles.title2}>{item}</h3>;
-						})}
-					</div>
-				) : null}
-
 				<InputUI
 					label={"Email"}
 					value={email}
@@ -86,14 +62,17 @@ const Login = () => {
 					type={"password"}
 				/>
 
-				<button type="submit" className={styles["login-btn"]}>
-					{isLoading ? "login..." : "login"}
+				<button
+					type="submit"
+					disabled={isLoading}
+					className={styles["login-btn"]}>
+					{isLoading ? "loading..." : "login"}
 				</button>
 
 				<div className={styles["login-box"]}>
 					<p>If you haven't an account ?</p>
 
-					<Link className={styles["login-link"]} to={"./register"}>
+					<Link className={styles["login-link"]} to={"/register"}>
 						sign up
 					</Link>
 				</div>

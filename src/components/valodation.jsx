@@ -1,44 +1,53 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { LoggedInContext } from "../context/loggedIn";
+import { removeItem } from "../helpers/persistance";
 
 const Valodation = () => {
-	const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
 	const navigate = useNavigate();
+    const { loggedIn } = useSelector((state) => state.auth);
+    
 
 	const logOuthandler = () => {
 		navigate("/login");
-		setLoggedIn(false);
-		localStorage.removeItem("token");
+		removeItem("token");
 	};
+
 	return (
 		<nav>
 			<ul id="MenuItems">
-				<Link to={"/"}>
-					<li>Home</li>
+				<Link className="navbar-link" to={"/"}>
+					<li>
+						<i className="fa-solid fa-bag-shopping user"></i>
+						<span className="user-span">Savat</span>
+					</li>
 				</Link>
-
-				<Link to={"/products"}>
-					<li>Products</li>
-				</Link>
-
 				{loggedIn ? (
 					<Link to={"./account"}>
-						<li>account</li>
+						<li>
+							<i className="fa-solid fa-user user"></i>
+						</li>
 					</Link>
 				) : (
 					<Link to={"./login"}>
-						<li>Login</li>
+						<li>
+							<i className="fa-solid fa-user user"></i>
+							<span className="user-span">Log in</span>
+						</li>
 					</Link>
 				)}
+				<Link to={"/"}>
+					<li>
+						<i className="fa-regular fa-heart user"></i>
+						<span className="user-span">Fovourite</span>
+					</li>
+				</Link>
 
 				{loggedIn ? (
-					<li onClick={logOuthandler}>Log Out</li>
-				) : (
-					<Link to={"./register"}>
-						<li>Register</li>
-					</Link>
-				)}
+					<li onClick={logOuthandler}>
+						<i class="fa-solid fa-right-from-bracket user"></i>
+						<span className="user-span">log out</span>
+					</li>
+				) : null}
 			</ul>
 		</nav>
 	);

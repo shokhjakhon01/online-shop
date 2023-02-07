@@ -1,5 +1,5 @@
-import { Valodation } from "./index";
-import { logo, addCard, menu } from "../constants";
+import { Search, Valodation } from "./index";
+import { logo, menu } from "../constants";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -7,15 +7,12 @@ const Navbar = () => {
 		<div className="container">
 			<div className="navbar">
 				<Link className="logo" to={"/"}>
-					<img src={logo} alt="RedStore" width="125px" />
+					<img src={logo} alt="RedStore" width="170px" />
 				</Link>
+
+				<Search />
 
 				<Valodation />
-
-				<Link className="navbar-link" to={'/'}>
-					<img src={addCard} alt="add-card" width="30px" height="30px" />
-					<span className="navbar-counter">0</span>
-				</Link>
 
 				<img src={menu} alt="menu" className="menu-icon" />
 			</div>

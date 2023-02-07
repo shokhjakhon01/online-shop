@@ -1,6 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { LoggedInContext } from "../context/loggedIn";
+import ValidationError from "../components/validation-error";
+import AuthService from "../service/auth";
+import { signUserFailore, signUserStart, signUserSuccess } from "../slice/auth";
 import classes from "../styles/register.module.css";
 import { InputUI } from "../ui";
 
@@ -8,72 +11,45 @@ const Register = () => {
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [error, setError] = useState(false);
-    const [erorMsg, setErrorMsg] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
 	const navigate = useNavigate();
-	const { setLoggedIn } = useContext(LoggedInContext);
+	const { isLoading, loggedIn } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 
-	
-
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
 
-		const newUser = {
-			user: {
-				username,
-				email,
-				password,
-			},
+		const user = {
+			username,
+			email,
+			password,
 		};
 
+		dispatch(signUserStart());
+
 		try {
-            (async function () {
-                setIsLoading(true);
-				const res = await fetch(`https://api.realworld.io/api/users/`, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(newUser),
-				});
-
-				const result = await res.json();
-
-				result && setIsLoading(false);
-
-				if (res.status === 200) {
-					setLoggedIn(true);
-					navigate("/");
-					localStorage.setItem("token", result.user.token);
-				} else {
-					const error = Object.keys(result.errors).map((name) => {
-						return `${name} ${result.errors[name].join(", ")}`;
-					});
-					setErrorMsg(error);
-					setError(true);
-				}
-			})();
+			const responce = await AuthService.userRegister(user);
+			dispatch(signUserSuccess(responce.user));
+			navigate("/");
 		} catch (error) {
-			console.log(error);
+			dispatch(signUserFailore(error.response.data.errors));
 		}
+
 		setEmail("");
 		setPassword("");
 		setUsername("");
 	};
 
+	useEffect(() => {
+		if (loggedIn) {
+			navigate("/");
+		}
+	}, [loggedIn]);
+
 	return (
 		<section className={classes.register}>
 			<h2 className={classes.register__title}>Sign up Page</h2>
+			<ValidationError />
 			<form className={classes.register__form} onSubmit={submitHandler}>
-				{error ? (
-					<div className={classes.error}>
-						{erorMsg.map((eror) => {
-							return <h3 className={classes.title2}>{eror}</h3>;
-						})}
-					</div>
-				) : null}
-
 				<InputUI value={email} setState={setEmail} label={"Email"} />
 
 				<InputUI
@@ -89,8 +65,11 @@ const Register = () => {
 					type={"password"}
 				/>
 
-				<button type="submit" className={classes.register__btn}>
-					{isLoading ? "register..." : "register"}
+				<button
+					type="submit"
+					disabled={isLoading}
+					className={classes.register__btn}>
+					{isLoading ? "loading..." : "register"}
 				</button>
 
 				<div className={classes.register__box}>
