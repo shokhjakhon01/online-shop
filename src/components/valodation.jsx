@@ -1,15 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { removeItem } from "../helpers/persistance";
+import { logOutUser } from "../slice/auth";
 
 const Valodation = () => {
-	const navigate = useNavigate();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { loggedIn } = useSelector((state) => state.auth);
     
 
 	const logOuthandler = () => {
+        dispatch(logOutUser())
 		navigate("/login");
-		removeItem("token");
+        removeItem("token");
 	};
 
 	return (
