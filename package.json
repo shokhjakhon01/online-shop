@@ -13,7 +13,11 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
+<<<<<<< HEAD
     "redux": "^4.2.1",
+=======
+    "styled-components": "^5.3.6",
+>>>>>>> ed7438f1a04b0852b0af99aacaff04adcae6bbca
     "swiper": "^8.4.6",
     "web-vitals": "^2.1.4"
   },
