@@ -24,10 +24,11 @@ const Login = () => {
 
 		try {
             const responce = await AuthService.userLogin(user);
-            
+            console.log('ishladi')
 			dispatch(signUserSuccess(responce.user));
 			navigate("/");
-		} catch (error) {
+        } catch (error) {
+            console.log(error);
 			dispatch(signUserFailore(error.response.data.errors));
 		}
 

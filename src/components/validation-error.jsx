@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import classes from "../styles/register.module.css";
 
 const ValidationError = () => {
-	const { error } = useSelector((state) => state.auth);
+    const { error } = useSelector((state) => state.auth);
+    
+   
 
 	const errorMessage = useCallback(() => {
 		return Object.keys(error).map((name) => {
