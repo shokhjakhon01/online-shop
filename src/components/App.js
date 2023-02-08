@@ -10,6 +10,12 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signUserSuccess } from "../slice/auth";
 import { getItem } from "../helpers/persistance";
+import CardService from "../service/card";
+import {
+	getCardsFailore,
+	getCardsStart,
+	getCardsSuccess,
+} from "../slice/cards";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -24,8 +30,22 @@ const App = () => {
 		}
 	};
 
+	const getCards = async () => {
+		const responce = await CardService.getCards();
+
+		dispatch(getCardsStart());
+
+		try {
+			dispatch(getCardsSuccess(responce.products));
+		} catch (error) {
+			dispatch(getCardsFailore(error));
+		}
+	};
+
 	useEffect(() => {
 		const token = getItem("token");
+
+		getCards();
 
 		if (token) {
 			getUser();

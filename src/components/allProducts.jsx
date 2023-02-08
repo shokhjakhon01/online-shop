@@ -1,33 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import AllProduct from "./allProduct";
 import Loader from "./loader";
 
 const AllProducts = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+	const { isloading, cards } = useSelector((state) => state.cards);
 
-  useEffect(() => {
-    setLoading(true);
-    const fetchProducts = async () => {
-      const res = await fetch("https://dummyjson.com/products");
-      const data = await res.json();
-      setProducts(data.products);
-      setLoading(false);
-    };
-    fetchProducts();
-  }, []);
+	if (isloading) {
+		return <Loader />;
+	}
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  return (
-    <div className="row">
-      {products.map((product, i) => (
-        <AllProduct key={i} product={product} />
-      ))}
-    </div>
-  );
+	return (
+		<div className="row">
+			{cards.map((product, i) => (
+				<AllProduct key={i} product={product} />
+			))}
+		</div>
+	);
 };
 
 export default AllProducts;

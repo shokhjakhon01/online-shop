@@ -4,7 +4,6 @@ export { default as Main } from "./main";
 export { default as Footer } from "./footer";
 export { default as Login } from "../pages/login";
 export { default as Register } from "../pages/register";
-export { default as Products } from "../pages/products";
 export { default as Account } from "../pages/account";
 export { default as Posts } from "../pages/posts";
 export { default as Search } from "./search";

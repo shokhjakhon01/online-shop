@@ -7,7 +7,7 @@ const Valodation = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { loggedIn } = useSelector((state) => state.auth);
-    console.log(loggedIn)
+   
 
 	const logOuthandler = () => {
         dispatch(logOutUser())
