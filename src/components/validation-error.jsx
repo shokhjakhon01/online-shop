@@ -5,6 +5,8 @@ import classes from "../styles/register.module.css";
 const ValidationError = () => {
 	const { error } = useSelector((state) => state.auth);
 
+	console.log(error)
+
 	const errorMessage = useCallback(() => {
 		return Object.keys(error).map((name) => {
 			const msg = error[name].join(", ");

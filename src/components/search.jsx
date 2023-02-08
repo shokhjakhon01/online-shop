@@ -1,5 +1,6 @@
 
 const Search = () => {
+
 	return (
 		<div className="search">
 			<i class="fa-solid icon__search fa-magnifying-glass"></i>

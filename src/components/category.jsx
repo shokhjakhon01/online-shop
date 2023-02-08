@@ -5,7 +5,7 @@ import classes from '../styles/category.module.css'
 const Category = ({ category }) => {
   return (
     <div className={classes.category}>
-      <Link className={classes.title} to={`./${category}`}> {category}</Link>
+      <Link className={classes.title} to={`/category/${category}`}> {category}</Link>
     </div>
   );
 };
