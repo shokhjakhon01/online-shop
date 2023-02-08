@@ -14,6 +14,7 @@ const Single = () => {
       const data = await res.json();
       setSingleData(data);
       setLoading(false);
+      console.log(data)
     };
     getSingleData();
   }, [id]);
