@@ -23,12 +23,11 @@ const Login = () => {
 		dispatch(signUserStart());
 
 		try {
-            const responce = await AuthService.userLogin(user);
-            
+			const responce = await AuthService.userLogin(user);
+
 			dispatch(signUserSuccess(responce.user));
 			navigate("/");
-        } catch (error) {
-           
+		} catch (error) {
 			dispatch(signUserFailore(error.response.data.errors));
 		}
 
@@ -46,8 +45,8 @@ const Login = () => {
 		<div className={styles.login}>
 			<h2 className={styles.title}>Log in Page</h2>
 
-            <ValidationError />
-            
+			<ValidationError />
+
 			<form className={styles["form-login"]} onSubmit={onSubmitHandler}>
 				<InputUI
 					label={"Email"}

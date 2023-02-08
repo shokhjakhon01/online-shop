@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { findStars } from "../helpers/findStars";
 import classes from '../styles/allProduct.module.css'
 
 const AllProduct = ({ product }) => {
@@ -11,13 +12,7 @@ const AllProduct = ({ product }) => {
 				alt=""
 			/>
 			<h4>{product.title}</h4>
-			<div className="rating">
-				<i className="fas fa-star"></i>
-				<i className="fas fa-star"></i>
-				<i className="fas fa-star"></i>
-				<i className="fas fa-star"></i>
-				<i className="far fa-star"></i>
-			</div>
+		{findStars(product.rating)}
 		<div>	<p>${product.price}</p>
 			<p>cart</p></div>
 		</Link>
