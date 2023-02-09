@@ -6,6 +6,12 @@ const CardService = {
 
 		return responce.data;
 	},
+
+	async getSingleCard(id) {
+		const responce = await axios.get(`/products/${id}`);
+
+		return responce.data;
+	},
 };
 
 export default CardService;

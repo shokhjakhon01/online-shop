@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	isloading: false,
 	cards: [],
+	singleCard: null,
 	error: null,
 };
 
@@ -23,10 +24,29 @@ export const cardSlice = createSlice({
 			state.isloading = false;
 			state.error = action.payload;
 		},
+
+		getSingleCardStart: (state) => {
+			state.isloading = true;
+		},
+
+		getSingleCardSuccess: (state, action) => {
+			state.isloading = false;
+			state.singleCard = action.payload;
+		},
+
+		getSingleCardFailore: (state) => {
+			state.isloading = false;
+		},
 	},
 });
 
-export const { getCardsStart, getCardsSuccess, getCardsFailore } =
-	cardSlice.actions;
+export const {
+	getCardsStart,
+	getCardsSuccess,
+	getCardsFailore,
+	getSingleCardStart,
+	getSingleCardFailore,
+	getSingleCardSuccess,
+} = cardSlice.actions;
 
 export default cardSlice.reducer;
